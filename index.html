@@ -28,6 +28,7 @@
                         </div>
                         <div class="row" style="text-align:center;margin-top:1em;">
                           <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Send invitation</button>
+                            <div id='message' class="alert" role="alert"></div>
                         </div>
                     </form>
                 </div>
@@ -63,7 +64,14 @@
 <script>
     $(document).ready(function() {
         $('#myModal').on('show.bs.modal', function (e) {
+            $('#message').empty().removeClass('alert-danger');
+            var name = $('#exampleInputName2').val();
+            if(name){
             $('.modal-title').text($('#exampleInputName2').val() + ", we want you to learn more about Hylasoft");
+            }else{
+                $('#message').addClass('alert-danger').text('You need to enter a name!');
+                return e.preventDefault();
+            }
         })
         
         $('#myModal').on('hide.bs.modal', function (e) {
