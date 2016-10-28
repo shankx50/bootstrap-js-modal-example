@@ -66,6 +66,10 @@
             $('.modal-title').text($('#exampleInputName2').val() + ", we want you to learn more about Hylasoft");
         })
         
+        $('#myModal').on('hide.bs.modal', function (e) {
+        $('#video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*')
+        ;})
+//        https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
     });
 </script>    
 </body>
